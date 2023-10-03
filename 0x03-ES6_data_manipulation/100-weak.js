@@ -13,4 +13,3 @@ export function queryAPI(endpoint) {
     throw Error('Endpoint load is high');
   }
 }
-
