@@ -1,10 +1,11 @@
-import Currency from './3-currency.js';
+import Currency from './3-currency';
 
 // create pricing class
 export default class Pricing {
-  constructor(amount, Currency) {
+  constructor(amount, currency) {
+    if (!(currency instanceof Currency)) throw TypeError();
     this._amount = amount;
-    this._currency = Currency;
+    this._currency = currency;
   }
 
   // getters and setters
@@ -20,8 +21,8 @@ export default class Pricing {
     return this._currency;
   }
 
-  set currency(Currency) {
-    this._currency = Currency;
+  set currency(value) {
+    this._currency = value;
   }
 
   // displayFullPrice method
