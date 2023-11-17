@@ -13,8 +13,8 @@ export default class Pricing {
     return this._amount;
   }
 
-  set amount(amount) {
-    this._amount = amount;
+  set amount(value) {
+    this._amount = value;
   }
 
   get currency() {
