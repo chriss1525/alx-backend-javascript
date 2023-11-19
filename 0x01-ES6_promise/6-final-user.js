@@ -11,13 +11,19 @@ import uploadPhoto from './5-photo-reject';
 //   ...
 //   ]
 
-export default function handleProfileSignup(firstName, lastName, fileName) {
-  return Promise.allSettled([signUpUser(firstName, lastName), uploadPhoto(fileName)])
-    .then((results) => {
-      const arr = [];
-      results.forEach((result) => {
-        arr.push(result);
-      });
-      return arr;
-    });
-  }
+export default function handleProfileSignup (firstName, lastName, fileName) {
+  const user = signupUser(firstName, lastName);
+  const photo = uploadPhoto(fileName);
+
+  const result = [];
+
+  return Promise.allSettled([user, photo]).then((results) => {
+    results.map(({ status, value, reason }) => (
+      result.push({
+        status,
+        value: status === 'rejected' ? reason.toString() : value
+      })
+    ));
+    return result;
+  });
+}
