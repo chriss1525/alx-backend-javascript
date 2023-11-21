@@ -4,12 +4,12 @@ const fs = require('fs');
 
 function countStudents(path) {
   try {
-    nstudent = fs.readFileSync(path, 'utf8').split('\n');
-    nstudents = nstudent.slice(1);
-    nstudents = nstudents.filter((item) => item);
-    console.log(`Number of students: ${nstudents.length}`);
+    const nstudent = fs.readFileSync(path, 'utf8').split('\n');
+    const nstudents = nstudent.slice(1);
+    const filteredStudents = nstudents.filter((item) => item);
+    console.log(`Number of students: ${filteredStudents.length}`);
     const fields = {};
-    for (const i of nstudents) {
+    for (const i of filteredStudents) {
       const student = i.split(',');
       if (!fields[student[3]]) {
         fields[student[3]] = [];
