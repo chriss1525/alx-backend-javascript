@@ -1,15 +1,17 @@
-// express server  that returns plain text 
+// express server  that returns plain text
 // whent the url path is / display Hello Holberton School!
 // whent the url path is /students display This is the list of our students
 // followed by:
 // Number of students: total number of students in csv file
 // Number of students in CS: 6. List: Johann, Arielle, Jonathan, Emmanuel, Guillaume, Katie
-// Number of students in SWE: 4. List: Guillaume, Joseph, Paul, Tommy 
+// Number of students in SWE: 4. List: Guillaume, Joseph, Paul, Tommy
 
 const express = require('express');
+
 const app = express();
 const port = 1245;
 const fs = require('fs');
+
 const DB_FILE = process.argv.length > 2 ? process.argv[2] : '';
 
 const countStudents = (dataPath) => new Promise((resolve, reject) => {
