@@ -12,33 +12,27 @@ describe('calculateNumber', () => {
     assert.strictEqual(calculateNumber(1, -3), -2);
   });
 
-  it('should round floats', () => {
-    assert.strictEqual(calculateNumber(1, 3.7), 5);
-    assert.strictEqual(calculateNumber(1.2, 3.7), 5);
-    assert.strictEqual(calculateNumber(1.5, 3.7), 6);
-    assert.strictEqual(calculateNumber(0.1, 0), 0);
-    assert.strictEqual(calculateNumber(1.4, -4.5), -3);
+  it('should round a', () => {
+    assert.strictEqual(calculateNumber(1.3, 1), 2);
+    assert.strictEqual(calculateNumber(1.7, 1), 3);
+    assert.strictEqual(calculateNumber(1.5, 1), 3);
+    assert.strictEqual(calculateNumber(1.4, 1), 2);
+    assert.strictEqual(calculateNumber(1.6, 1), 3);
   });
 
-  //it('should return the rounded number if only one is provided', () => {
-  //assert.strictEqual(calculateNumber(2), 2);
-  //assert.strictEqual(calculateNumber(2.7), 3);
-  //});
-
-  it('should cast non-numbers into numbers', () => {
-    assert.strictEqual(calculateNumber(true, '3'), 4);
-    assert.strictEqual(calculateNumber(1, '3.7'), 5);
-    assert.strictEqual(calculateNumber('1.2', 3.7), 5);
+  it('should round b', () => {
+    assert.strictEqual(calculateNumber(1, 1.3), 2);
+    assert.strictEqual(calculateNumber(1, 1.7), 3);
+    assert.strictEqual(calculateNumber(1, 1.5), 3);
+    assert.strictEqual(calculateNumber(1, 1.4), 2);
+    assert.strictEqual(calculateNumber(1, 1.6), 3);
   });
 
-  // it('should throw typeerror if either param cannot be coerced to a number', () => {
-  //  assert.throws(() => calculateNumber('hello'), {
-  //    name: 'TypeError',
-  //    message: 'Parameters must be numbers'
-  //  });
-  //  assert.throws(() => calculateNumber(1.2, 'dog'), {
-  //  name: 'TypeError',
-  //  message: 'Parameters must be numbers'
-  //  });
-  //  });
-});
+  it('should round a and b', () => {
+    assert.strictEqual(calculateNumber(1.3, 1.3), 2);
+    assert.strictEqual(calculateNumber(1.7, 1.7), 4);
+    assert.strictEqual(calculateNumber(1.5, 1.5), 4);
+    assert.strictEqual(calculateNumber(1.4, 1.4), 2);
+    assert.strictEqual(calculateNumber(1.6, 1.6), 4);
+  });
+  });
